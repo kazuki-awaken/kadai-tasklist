@@ -1,9 +1,18 @@
-<h1>タスク一覧</h1>
+<% if logged_in? %>
+  <p>ログイン完了ユーザ: <%= current_user.name %></p>
+  <h1>タスク一覧</h1>
+  
+  <ul>
+    <% @tasks.each do |task| %>
+      <li><%= link_to task.id, task %> : <%= task.status %> &gt; : <%= task.content %></li>
+    <% end %>
+  </ul>
+  <%= link_to '新規タスクの保存', new_task_path %>
+  <%= link_to 'Logout', logout_path, method: :delete %>
+<% else %>
+  <%= link_to 'Sign up', signup_path %>
+  <%= link_to 'Login', login_path %>
+<% end %>
 
-<ul>
-  <% @tasks.each do |task| %>
-    <li><%= link_to task.id, task %> : <%= task.status %> &gt; : <%= task.content %></li>
-  <% end %>
-</ul>
 
-<%= link_to '新規タスクの保存', new_task_path %>
+
