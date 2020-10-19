@@ -6,7 +6,8 @@
           <p>id:<%= link_to task.id, task_path(task) %> <span class="text-muted">posted at <%= task.created_at %></span></p>
         </div>
         <div>
-          <p><%= task.content %></p>
+          <p>タスク：<%= task.content %></p>
+          <p>ステータス：<%= task.status%></p>
         </div>
         <div>
           <% if current_user == task.user %>
