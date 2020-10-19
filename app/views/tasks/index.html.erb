@@ -1,24 +1,7 @@
 <% if logged_in? %>
 
-  <div class="row">
-    <aside class="col-sm-4">
-      <%= form_with(model: @task, local: true) do |f| %>
-        <div class="form-group">
-          <%= f.label :content, 'タスク' %>
-          <%= f.text_area :content, class: 'form-control', rows: 5 %>
-        </div>
-        <div class="form-group">
-          <%= f.label :status, 'ステータス' %>
-          <%= f.text_field :status, class: 'form-control' %>
-        </div>
-        <%= f.submit '保存', class: 'btn btn-primary btn-block' %>
-      <% end %>
-    </aside>
-    <div class="col-sm-8">
-      <%= render 'tasks/tasks', tasks: @tasks %>
-    </div>
-  </div>
-  
+  <%= render 'tasks/tasks', tasks: @tasks %>
+  <%= link_to '新規作成',new_task_path %>
   <%= link_to 'Logout', logout_path, method: :delete %>
 <% end %>
 
